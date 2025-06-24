@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karan Raj</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #090040; /* Dark Navy */
+      --secondary-color: #471396; /* Deep Purple */
+      --accent-color: #b13bff; /* Vibrant Purple */
+      --highlight-color: #ffcc00; /* Yellow highlight (optional usage) */
+      --text-color: #ffffff;
+      --muted-color: #d1c8e7;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--primary-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    nav {
+      background: var(--secondary-color);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+    .nav-links {
+      display: flex; /* Changed from block to flex for easier menu control */
+    }
+    .nav-links a {
+      margin-left: 20px;
+      font-weight: 500;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Hamburger Menu Icon (hidden by default) */
+    .hamburger-menu {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    .home {
+      padding: 100px 20px 60px;
+      background: var(--primary-color);
+      text-align: center;
+    }
+    .home-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .home-social {
+      margin-bottom: 20px;
+    }
+    .home-social-icon {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: var(--accent-color);
+      transition: transform 0.3s;
+    }
+    .home-social-icon:hover {
+      transform: scale(1.2);
+    }
+    .home-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .home-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--muted-color);
+    }
+    .home-description {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      color: var(--muted-color);
+    }
+    .button {
+      display: inline-block;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .button:hover {
+      background: var(--highlight-color); /* Or a slightly darker accent-color */
+      transform: translateY(-3px); /* Subtle lift effect */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional shadow */
+    }
+    .home-scroll {
+      margin-top: 40px;
+    }
+    .home-scroll-name {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted-color);
+      margin-top: 5px;
+    }
+    .home-scroll-arrow {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+    .home-scroll-mouse {
+      width: 25px;
+      margin-bottom: 5px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      color: var(--text-color);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent-color);
+      margin-top: 8px;
+    }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+    }
+    .skills li {
+      background: var(--secondary-color);
+      color: var(--accent-color);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .project {
+      background: var(--secondary-color);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .project h3 {
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
+    .project p {
+        margin-bottom: 10px;
+        color: var(--muted-color);
+    }
+    .project strong {
+        color: var(--accent-color);
+    }
+    .project .btn {
+      margin-right: 10px;
+    }
+    .btn {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 10px 20px; /* Slightly smaller padding for project buttons */
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      background: var(--highlight-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    form {
+      display: grid;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    input, textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background-color: #333; /* Darker background for inputs */
+      color: var(--text-color);
+    }
+    input::placeholder, textarea::placeholder {
+        color: var(--muted-color);
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--accent-color);
+    }
+    input[type="submit"] {
+      background: var(--accent-color);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background: var(--highlight-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    footer {
+      background: var(--secondary-color);
+      color: var(--muted-color);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .education-item {
+      background: var(--secondary-color);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .education-item h3 {
+      margin-bottom: 5px;
+      color: var(--text-color);
+    }
+    .education-item p {
+      color: var(--muted-color);
+      margin-bottom: 5px;
+    }
+
+    /* About Section Styling */
+    .about-flex-container {
+      display: flex;
+      align-items: center; /* Vertically align items */
+      gap: 40px; /* Space between columns and line */
+      padding-top: 20px; /* Add some padding from the heading */
+    }
+
+    .about-image-column {
+      flex: 1; /* Takes one part of available space */
+      text-align: center;
+      min-width: 200px; /* Ensure image column has a minimum width */
+    }
+
+    .about-profile-img {
+      width: 200px; /* Adjust size */
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-color);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-vertical-line {
+      width: 2px; /* Thickness of the line */
+      background-color: var(--accent-color); /* Color of the line */
+      height: 150px; /* Height of the line, adjust as needed */
+      flex-shrink: 0; /* Prevent line from shrinking */
+    }
+
+    .about-text-column {
+      flex: 2; /* Takes two parts of available space, adjust proportion as needed */
+      padding-left: 20px; /* Padding from the line */
+    }
+
+    .about-text-column p {
+      margin-bottom: 15px; /* Space between paragraphs */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* Hide by default on small screens */
+        flex-direction: column;
+        width: 100%;
+        background: var(--secondary-color);
+        position: absolute;
+        top: 60px; /* Adjust based on nav height */
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+      }
+      .nav-links.active {
+        display: flex; /* Show when active */
+      }
+      .nav-links a {
+        margin: 10px 0;
+      }
+      .hamburger-menu {
+        display: block; /* Show only on small screens */
+      }
+
+      .home-title {
+        font-size: 2rem;
+      }
+      .home-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .about-flex-container {
+        flex-direction: column; /* Stack columns on smaller screens */
+        gap: 20px;
+        text-align: center;
+      }
+      .about-vertical-line {
+        width: 80%; /* Make it horizontal */
+        height: 2px; /* Thin line */
+        margin: 20px auto; /* Center the horizontal line */
+      }
+      .about-text-column {
+        padding-left: 0; /* Remove left padding when stacked */
+        text-align: center; /* Center text when stacked */
+      }
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .fade-delay-1 { animation-delay: 0.2s; }
+    .fade-delay-2 { animation-delay: 0.4s; }
+    .fade-delay-3 { animation-delay: 0.6s; }
+    .fade-delay-4 { animation-delay: 0.8s; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">Karan Raj</div>
+      <div class="hamburger-menu" id="hamburger-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main">
+    <section class="home section" id="home">
+      <div class="home-container">
+        <div class="home-social">
+          <a href="https://linkedin.com/in/karanraj" target="_blank" class="home-social-icon" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/shobhit_dev_/" target="_blank" class="home-social-icon" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://github.com/karanraj" target="_blank" class="home-social-icon" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <h1 class="home-title fade-in-up fade-delay-1">Hi, I am Karan Raj</h1>
+        <h3 class="home-subtitle fade-in-up fade-delay-2">UI/UX-Focused Web Developer</h3>
+        <p class="home-description fade-in-up fade-delay-3">
+          A recent graduate in B.Voc. Software Development & System Administration, passionate about frontend development, cloud computing, system administration, and problem-solving. I thrive on building robust systems, developing responsive user interfaces, managing databases efficiently, and automating operations using scripting and Linux tools.
+        </p>
+        <a href="#contact" class="button fade-in-up fade-delay-4">Contact Me <i class="fa-regular fa-envelope button-icon"></i></a>
+        <a href="Karanraj resume.pdf" download class="button fade-in-up fade-delay-4">Download CV <i class="fa-solid fa-download button-icon"></i></a>
+      </div>
+    </section>
+  </main>
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <div class="about-flex-container">
+      <div class="about-image-column">
+        <img src="karan" alt="Karan Raj's profile picture" class="about-profile-img">
+      </div>
+      <div class="about-vertical-line"></div>
+      <div class="about-text-column">
+        <p>I'm Karanraj R, a recent graduate in Software Development & System Administration from St. Joseph’s College (Autonomous), Trichy. My academic journey has equipped me with a strong foundation in both software development principles and system administration practices.</p>
+        <p>I’m deeply interested in creating intuitive user interfaces, developing efficient backend solutions, and ensuring the smooth operation of IT infrastructure. I enjoy tackling complex problems and am always eager to learn new technologies to deliver high-quality, scalable solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="container">
+    <h2>Education</h2>
+    <div class="education-item">
+      <h3>B.Voc. Software Development & System Administration</h3>
+      <p>St. Joseph’s College (Autonomous), Tiruchirappalli</p>
+      <p>2020 - 2025</p>
+    </div>
+    <div class="education-item">
+      <h3>Bishop Heber Higher Secondary School</h3>
+      <p>Trichy</p>
+      <p>2022</p>
+    </div>
+    <div class="education-item">
+      <h3>Servite Matriculation School</h3>
+      <p>Trichy</p>
+      <p>2020</p>
+    </div>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li>Python</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Git & GitHub</li>
+      <li>Linux</li>
+      <li>Figma</li>
+      <li>Canva</li>
+      <li>SQL</li>
+      <li>Aws</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>PC Assembling Web Application</h3>
+      <p>A user-friendly platform that assists users in building custom PCs by selecting compatible hardware components. It ensures component compatibility-such as CPU socket type, power requirements, and motherboard support-through an automated validation system, making PC building easier and error-free.</p>
+<p><strong>Technologies:</strong> HTML, CSS, JavaScript (Frontend logic), Php With Mysql.</p>    </div>
+    <div class="project">
+      <h3>Job Seeker Web Application</h3>
+      <p>A comprehensive portal connecting job seekers with employers, simplifying the recruitment process. Users can create profiles, upload resumes, and search for jobs based on various criteria. Employers can post job openings, review applications, and filter candidates by qualifications and skills.</p>
+    <p><strong>Technologies:</strong> HTML, CSS, JavaScript (Frontend logic), Php With Mysql.</p>
+    </div>
+  </section>
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="be09826c-a033-4a00-9fb8-a82b6fb72284">
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name"/>
+      <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email"/>
+      <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
+      <input type="submit" value="Send Message" />
+    </form>
+    <div id="formMessage" style="text-align:center; color: var(--highlight-color); margin-top:20px;"></div>
+
+    <p style="text-align:center; margin-top:20px; color: var(--muted-color);">Or email me directly at <a href="mailto:karanraj0504@gmail.com">karanraj0504@gmail.com</a></p>
+  <script>
+  const form = document.querySelector("form");
+  const formMessage = document.getElementById("formMessage");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent page reload
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        formMessage.textContent = "Message sent successfully!";
+        form.reset(); // Clear form fields
+      } else {
+        formMessage.textContent = "Oops! Something went wrong. Try again.";
+      }
+    } catch (error) {
+      formMessage.textContent = "Error sending message. Please try later.";
+    }
+
+    // Optionally clear message after a few seconds
+    setTimeout(() => {
+      formMessage.textContent = "";
+    }, 5000);
+  });
+</script>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Karan Raj. All rights reserved.</p>
+  </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    // Hamburger menu toggle
+    hamburgerMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close nav links when a link is clicked (for mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
